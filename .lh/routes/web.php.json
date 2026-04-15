@@ -1,0 +1,30 @@
+{
+    "sourceFile": "routes/web.php",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1776247734478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1776247888632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,14 +10,9 @@\n Route::get('/', function () {\n     return view('welcome');\n });\n \n-// Admin Auth\n-// Route::prefix('admin')->name('admin.')->group(function () {\n-//     Route::get('login', [AuthController::class, 'showLogin'])->name('login');\n-//     Route::post('login', [AuthController::class, 'login'])->name('login.post');\n-//     Route::post('logout', [AuthController::class, 'logout'])->name('logout');\n-// });\n+Route::prefix('admin')->name('admin.')->group(function () {\\n    Route::get('login', [AuthController::class, 'showLogin'])->name('login');\\n    Route::post('login', [AuthController::class, 'login'])->name('login.post');\\n    Route::post('logout', [AuthController::class, 'logout'])->name('logout');\\n});\n \n // Admin Protected\n Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {\n     Route::get('dashboard', fn() => view('admin.dashboard'))->name('dashboard');\n"
+                },
+                {
+                    "date": 1776247927597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,14 @@\n Route::get('/', function () {\n     return view('welcome');\n });\n \n-Route::prefix('admin')->name('admin.')->group(function () {\\n    Route::get('login', [AuthController::class, 'showLogin'])->name('login');\\n    Route::post('login', [AuthController::class, 'login'])->name('login.post');\\n    Route::post('logout', [AuthController::class, 'logout'])->name('logout');\\n});\n+// Admin Auth\n+Route::prefix('admin')->name('admin.')->group(function () {\n+    Route::get('login', [AuthController::class, 'showLogin'])->name('login');\n+    Route::post('login', [AuthController::class, 'login'])->name('login.post');\n+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');\n+});\n \n // Admin Protected\n Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {\n     Route::get('dashboard', fn() => view('admin.dashboard'))->name('dashboard');\n@@ -20,4 +25,5 @@\n     Route::resource('brands', BrandController::class);\n     Route::resource('properties', PropertyController::class);\n     Route::resource('products', ProductController::class);\n });\n+\n"
+                },
+                {
+                    "date": 1776248180702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,5 +25,4 @@\n     Route::resource('brands', BrandController::class);\n     Route::resource('properties', PropertyController::class);\n     Route::resource('products', ProductController::class);\n });\n-\n"
+                }
+            ],
+            "date": 1776247734478,
+            "name": "Commit-0",
+            "content": "<?php\n\nuse App\\Http\\Controllers\\Admin\\AuthController;\nuse App\\Http\\Controllers\\Admin\\BrandController;\nuse App\\Http\\Controllers\\Admin\\CategoryController;\nuse App\\Http\\Controllers\\Admin\\ProductController;\nuse App\\Http\\Controllers\\Admin\\PropertyController;\nuse Illuminate\\Support\\Facades\\Route;\n\nRoute::get('/', function () {\n    return view('welcome');\n});\n\n// Admin Auth\n// Route::prefix('admin')->name('admin.')->group(function () {\n//     Route::get('login', [AuthController::class, 'showLogin'])->name('login');\n//     Route::post('login', [AuthController::class, 'login'])->name('login.post');\n//     Route::post('logout', [AuthController::class, 'logout'])->name('logout');\n// });\n\n// Admin Protected\nRoute::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {\n    Route::get('dashboard', fn() => view('admin.dashboard'))->name('dashboard');\n    Route::resource('categories', CategoryController::class);\n    Route::resource('brands', BrandController::class);\n    Route::resource('properties', PropertyController::class);\n    Route::resource('products', ProductController::class);\n});\n"
+        }
+    ]
+}
