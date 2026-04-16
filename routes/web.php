@@ -7,10 +7,6 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '.*');
-
 // Admin Auth
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthController::class, 'showLogin'])->name('login');
@@ -26,3 +22,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::resource('properties', PropertyController::class);
     Route::resource('products', ProductController::class);
 });
+
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any', '.*');

@@ -147,21 +147,21 @@
 <main id="main">
     <div class="content-wrapper">
 
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('success')): ?>
+        <?php if(session('success')): ?>
             <div class="alert alert-success d-flex align-items-center gap-2 mb-4" role="alert">
                 <i class="bi bi-check-circle-fill"></i>
                 <?php echo e(session('success')); ?>
 
             </div>
-        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        <?php endif; ?>
 
-        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if(session('error')): ?>
+        <?php if(session('error')): ?>
             <div class="alert alert-danger d-flex align-items-center gap-2 mb-4" role="alert">
                 <i class="bi bi-exclamation-circle-fill"></i>
                 <?php echo e(session('error')); ?>
 
             </div>
-        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
+        <?php endif; ?>
 
         <?php echo $__env->yieldContent('content'); ?>
     </div>
