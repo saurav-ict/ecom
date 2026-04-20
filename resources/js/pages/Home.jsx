@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { api } from "./services/api";
-import ProductCard from "../ProductCard";
+import { api } from "../services/api";
+import ProductCard from "../components/ProductCard";
 
 export default function Home() {
     const [products, setProducts] = useState([]);
