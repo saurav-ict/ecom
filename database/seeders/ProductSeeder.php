@@ -8,224 +8,88 @@ use App\Models\Product;
 use App\Models\PropertyOption;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class ProductSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        $products = [
-            [
-                'name'        => 'Nike Air Max 270',
-                'sku'         => 'NK-AM270-001',
-                'description' => 'Lightweight and breathable running shoe with Max Air unit for all-day comfort.',
-                'price'       => 149.99,
-                'stock'       => 50,
-                'brand'       => 'Nike',
-                'categories'  => ['Sneakers', 'Running'],
-                'color'       => 'Black',
-                'size'        => 'L',
-                'material'    => 'Nylon',
-                'gender'      => 'Men',
-            ],
-            [
-                'name'        => 'Adidas Ultraboost 22',
-                'sku'         => 'AD-UB22-002',
-                'description' => 'Premium running shoe with Boost midsole for incredible energy return.',
-                'price'       => 179.99,
-                'stock'       => 35,
-                'brand'       => 'Adidas',
-                'categories'  => ['Sneakers', 'Running'],
-                'color'       => 'White',
-                'size'        => 'M',
-                'material'    => 'Polyester',
-                'gender'      => 'Unisex',
-            ],
-            [
-                'name'        => 'Puma Classic Leather Jacket',
-                'sku'         => 'PM-LJ-003',
-                'description' => 'Stylish leather jacket with modern fit and premium finish.',
-                'price'       => 229.99,
-                'stock'       => 20,
-                'brand'       => 'Puma',
-                'categories'  => ['Jackets'],
-                'color'       => 'Black',
-                'size'        => 'XL',
-                'material'    => 'Leather',
-                'gender'      => 'Men',
-            ],
-            [
-                'name'        => 'Nike Dri-FIT T-Shirt',
-                'sku'         => 'NK-DFT-004',
-                'description' => 'Moisture-wicking fabric keeps you dry and comfortable during workouts.',
-                'price'       => 34.99,
-                'stock'       => 100,
-                'brand'       => 'Nike',
-                'categories'  => ['T-Shirts', 'Gym & Fitness'],
-                'color'       => 'Blue',
-                'size'        => 'M',
-                'material'    => 'Polyester',
-                'gender'      => 'Men',
-            ],
-            [
-                'name'        => 'Adidas Tiro Track Pants',
-                'sku'         => 'AD-TTP-005',
-                'description' => 'Classic track pants with tapered fit and iconic 3-stripe design.',
-                'price'       => 54.99,
-                'stock'       => 60,
-                'brand'       => 'Adidas',
-                'categories'  => ['Gym & Fitness'],
-                'color'       => 'Navy',
-                'size'        => 'L',
-                'material'    => 'Polyester',
-                'gender'      => 'Men',
-            ],
-            [
-                'name'        => 'Reebok Classic Sneakers',
-                'sku'         => 'RB-CS-006',
-                'description' => 'Timeless design with soft leather upper and cushioned sole.',
-                'price'       => 89.99,
-                'stock'       => 45,
-                'brand'       => 'Reebok',
-                'categories'  => ['Sneakers'],
-                'color'       => 'White',
-                'size'        => 'M',
-                'material'    => 'Leather',
-                'gender'      => 'Unisex',
-            ],
-            [
-                'name'        => 'Under Armour Sports Bag',
-                'sku'         => 'UA-SB-007',
-                'description' => 'Durable sports bag with multiple compartments and water-resistant coating.',
-                'price'       => 69.99,
-                'stock'       => 30,
-                'brand'       => 'Under Armour',
-                'categories'  => ['Bags'],
-                'color'       => 'Black',
-                'size'        => 'XL',
-                'material'    => 'Nylon',
-                'gender'      => 'Unisex',
-            ],
-            [
-                'name'        => 'Converse Chuck Taylor All Star',
-                'sku'         => 'CV-CT-008',
-                'description' => 'Iconic canvas sneaker with rubber sole and classic high-top silhouette.',
-                'price'       => 64.99,
-                'stock'       => 80,
-                'brand'       => 'Converse',
-                'categories'  => ['Sneakers'],
-                'color'       => 'Red',
-                'size'        => 'S',
-                'material'    => 'Cotton',
-                'gender'      => 'Unisex',
-            ],
-            [
-                'name'        => 'Vans Old Skool',
-                'sku'         => 'VN-OS-009',
-                'description' => 'Classic skate shoe with suede and canvas upper and signature side stripe.',
-                'price'       => 74.99,
-                'stock'       => 55,
-                'brand'       => 'Vans',
-                'categories'  => ['Sneakers'],
-                'color'       => 'Black',
-                'size'        => 'M',
-                'material'    => 'Leather',
-                'gender'      => 'Unisex',
-            ],
-            [
-                'name'        => 'New Balance 574 Core',
-                'sku'         => 'NB-574-010',
-                'description' => 'Heritage running shoe with ENCAP midsole technology for superior comfort.',
-                'price'       => 99.99,
-                'stock'       => 40,
-                'brand'       => 'New Balance',
-                'categories'  => ['Sneakers', 'Running'],
-                'color'       => 'Grey',
-                'size'        => 'L',
-                'material'    => 'Nylon',
-                'gender'      => 'Men',
-            ],
-            [
-                'name'        => 'Nike Women\'s Dress',
-                'sku'         => 'NK-WD-011',
-                'description' => 'Elegant athletic dress with stretch fabric for maximum movement.',
-                'price'       => 79.99,
-                'stock'       => 25,
-                'brand'       => 'Nike',
-                'categories'  => ['Dresses'],
-                'color'       => 'Pink',
-                'size'        => 'S',
-                'material'    => 'Polyester',
-                'gender'      => 'Women',
-            ],
-            [
-                'name'        => 'Adidas Kids Running Shoes',
-                'sku'         => 'AD-KRS-012',
-                'description' => 'Lightweight kids shoe with cushioned sole for active play.',
-                'price'       => 49.99,
-                'stock'       => 70,
-                'brand'       => 'Adidas',
-                'categories'  => ['School Shoes'],
-                'color'       => 'Blue',
-                'size'        => 'S',
-                'material'    => 'Nylon',
-                'gender'      => 'Kids',
-            ],
-        ];
+        $faker = Faker::create();
 
-        foreach ($products as $data) {
-            $brand = Brand::where('name', $data['brand'])->first();
+        $brands = Brand::pluck('id')->toArray();
+        $categories = Category::all();
+        $propertyOptions = PropertyOption::with('property')->get();
 
-            // Unique slug
-            $slug     = Str::slug($data['name']);
-            $original = $slug;
-            $i        = 1;
-            while (Product::where('slug', $slug)->exists()) {
-                $slug = $original . '-' . $i++;
+        $techAdjectives = ['Pro', 'Max', 'Ultra', 'Plus', 'Lite', 'X', 'Elite', 'Premium', 'Smart', 'Wireless'];
+        $techNouns = ['Smartphone', 'Laptop', 'Tablet', 'Headphones', 'Smartwatch', 'Monitor', 'Camera', 'Speaker'];
+        
+        $fashionAdjectives = ['Classic', 'Modern', 'Casual', 'Formal', 'Vintage', 'Slim Fit', 'Comfort', 'Sport'];
+        $fashionNouns = ['T-Shirt', 'Jeans', 'Jacket', 'Sneakers', 'Dress', 'Sweater', 'Hoodie', 'Shorts'];
+
+        $totalProducts = 60;
+
+        for ($i = 1; $i <= $totalProducts; $i++) {
+            $isTech = $faker->boolean(60); // 60% chance of being tech
+
+            if ($isTech) {
+                $name = $faker->randomElement($techAdjectives) . ' ' . $faker->randomElement($techNouns) . ' ' . $faker->numberBetween(10, 99);
+                $price = $faker->randomFloat(2, 5000, 150000);
+            } else {
+                $name = $faker->randomElement($fashionAdjectives) . ' ' . $faker->randomElement($fashionNouns) . ' ' . $faker->word();
+                $price = $faker->randomFloat(2, 500, 5000);
             }
 
-            // Dummy Image Logic
-            $imageName = 'products/' . $slug . '.png';
-            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('products')) {
-                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('products');
-            }
-            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($imageName)) {
-                $bg = str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
-                $imageUrl = "https://placehold.co/400x400/{$bg}/FFFFFF.png?text=" . urlencode($data['name']);
-                $imageContent = @file_get_contents($imageUrl);
-                if ($imageContent) {
-                    \Illuminate\Support\Facades\Storage::disk('public')->put($imageName, $imageContent);
-                }
-            }
+            // Ensure unique slug
+            $slug = Str::slug($name) . '-' . Str::random(5);
 
             $product = Product::updateOrCreate(
-                ['sku' => $data['sku']],
+                ['slug' => $slug],
                 [
-                    'name'        => $data['name'],
-                    'slug'        => $slug,
-                    'description' => $data['description'],
-                    'price'       => $data['price'],
-                    'stock'       => $data['stock'],
-                    'brand_id'    => $brand?->id,
-                    'is_active'   => true,
-                    'image'       => $imageName,
+                    'name' => ucwords($name),
+                    'description' => $faker->paragraph(2),
+                    'price' => $price,
+                    'stock' => $faker->numberBetween(0, 150),
+                    'is_active' => true,
+                    'brand_id' => $faker->randomElement($brands),
+                    'image' => "https://picsum.photos/seed/product{$i}/300/300",
+                    'sku' => 'SKU-' . strtoupper(Str::random(6)),
                 ]
             );
 
-            // Sync categories
-            $categoryIds = Category::whereIn('name', $data['categories'])->pluck('id')->toArray();
-            $product->categories()->sync($categoryIds);
+            // Assign Categories
+            if ($categories->isNotEmpty()) {
+                $product->categories()->sync($categories->random(rand(1, 2))->pluck('id'));
+            }
 
-            // Sync one option per property
-            $optionIds = [];
-            foreach (['color' => 'Color', 'size' => 'Size', 'material' => 'Material', 'gender' => 'Gender'] as $key => $propertyName) {
-                if (!empty($data[$key])) {
-                    $option = PropertyOption::whereHas('property', fn($q) => $q->where('name', $propertyName))
-                        ->where('name', $data[$key])
-                        ->first();
-                    if ($option) $optionIds[] = $option->id;
+            // Assign Properties based on type
+            if ($propertyOptions->isNotEmpty()) {
+                if ($isTech) {
+                    // Assign storage
+                    $storageOptions = $propertyOptions->filter(fn($po) => $po->property->name === 'Storage');
+                    if ($storageOptions->isNotEmpty()) {
+                        $product->propertyOptions()->attach($storageOptions->random()->id);
+                    }
+                    // Assign Color
+                    $colorOptions = $propertyOptions->filter(fn($po) => $po->property->name === 'Color');
+                    if ($colorOptions->isNotEmpty()) {
+                        $product->propertyOptions()->attach($colorOptions->random()->id);
+                    }
+                } else {
+                    // Assign Size
+                    $sizeOptions = $propertyOptions->filter(fn($po) => $po->property->name === 'Size');
+                    if ($sizeOptions->isNotEmpty()) {
+                        $product->propertyOptions()->attach($sizeOptions->random()->id);
+                    }
+                    // Assign Color
+                    $colorOptions = $propertyOptions->filter(fn($po) => $po->property->name === 'Color');
+                    if ($colorOptions->isNotEmpty()) {
+                        $product->propertyOptions()->attach($colorOptions->random()->id);
+                    }
                 }
             }
-            $product->propertyOptions()->sync($optionIds);
         }
     }
 }

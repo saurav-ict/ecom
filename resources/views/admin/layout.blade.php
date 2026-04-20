@@ -68,7 +68,7 @@
             </a>
         </div>
         <div class="nav-item">
-            <a href="#">
+            <a href="{{ route('admin.customers.index') }}">
                 <i class="bi bi-people-fill"></i> Customers
             </a>
         </div>

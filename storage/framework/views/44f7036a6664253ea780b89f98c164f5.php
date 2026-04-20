@@ -33,7 +33,7 @@
                             <td class="text-muted"><?php echo e($product->id); ?></td>
                             <td>
                                 <?php if($product->image): ?>
-                                    <img src="<?php echo e(asset('storage/' . $product->image)); ?>"
+                                    <img src="<?php echo e(Str::startsWith($product->image, ['http://', 'https://']) ? $product->image : asset('storage/' . $product->image)); ?>"
                                          style="width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #eee;">
                                 <?php else: ?>
                                     <div style="width:40px;height:40px;background:#f4f6fb;border-radius:6px;display:flex;align-items:center;justify-content:center;">

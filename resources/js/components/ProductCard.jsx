@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
 
             <div className="relative">
                 <img
-                    src={'/storage/' + product.image || "https://via.placeholder.com/300"}
+                    src={product.image ? (product.image.startsWith('http') ? product.image : '/storage/' + product.image) : "https://via.placeholder.com/300"}
                     className="w-full h-48 object-cover"
                 />
 

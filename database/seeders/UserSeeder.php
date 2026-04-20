@@ -5,29 +5,53 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class UserSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
-            [
-                'name'     => 'Super Admin',
-                'password' => Hash::make('password'),
-                'role'     => 'admin',
-            ]
-        );
+        $faker = Faker::create();
 
-        User::updateOrCreate(
-            ['email' => 'customer@demo.com'],
+        // 1. Create Admin Users (2 users)
+        $admins = [
             [
-                'name'     => 'John Customer',
+                'name' => 'Admin User One',
+                'email' => 'admin@example.com',
                 'password' => Hash::make('password'),
-                'role'     => 'customer',
-                'phone'    => '+1 555 000 1234',
-                'address'  => '123 Main St, New York, NY 10001',
+                'role' => 'admin',
+                'phone' => '1234567890',
+                'address' => '123 Admin St, City, Country',
+            ],
+            [
+                'name' => 'Admin User Two',
+                'email' => 'admin2@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
+                'phone' => '0987654321',
+                'address' => '456 Admin Ave, City, Country',
             ]
-        );
+        ];
+
+        foreach ($admins as $admin) {
+            User::updateOrCreate(['email' => $admin['email']], $admin);
+        }
+
+        // 2. Create Customer Users (13 users to reach 15 total)
+        for ($i = 0; $i < 13; $i++) {
+            User::updateOrCreate(
+                ['email' => $faker->unique()->safeEmail()],
+                [
+                    'name' => $faker->name(),
+                    'password' => Hash::make('password'),
+                    'role' => 'customer',
+                    'phone' => $faker->phoneNumber(),
+                    'address' => $faker->address(),
+                ]
+            );
+        }
     }
 }

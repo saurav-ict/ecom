@@ -112,7 +112,7 @@
             <div class="card-header">Image</div>
             <div class="card-body">
                 @if(isset($product) && $product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded mb-2"
+                    <img src="{{ Str::startsWith($product->image, ['http://', 'https://']) ? $product->image : asset('storage/' . $product->image) }}" class="img-fluid rounded mb-2"
                          style="max-height:160px;object-fit:cover;width:100%;">
                 @endif
                 <input type="file" name="image" accept="image/*"

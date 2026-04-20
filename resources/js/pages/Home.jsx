@@ -30,8 +30,9 @@ export default function Home() {
                     </div>
 
                     <img
-                        src="https://via.placeholder.com/400x250"
-                        className="hidden md:block"
+                        src="https://picsum.photos/seed/hero/400/250"
+                        className="hidden md:block rounded-xl shadow-lg"
+                        alt="Hero Promotion"
                     />
                 </div>
             </div>
@@ -47,8 +48,9 @@ export default function Home() {
                             className="bg-white rounded-xl shadow hover:shadow-lg transition p-4 text-center cursor-pointer"
                         >
                             <img
-                                src="https://via.placeholder.com/100"
-                                className="mx-auto mb-3"
+                                src={`https://picsum.photos/seed/category${cat.id}/100/100`}
+                                className="mx-auto mb-3 rounded-full object-cover"
+                                alt={cat.name}
                             />
                             <h3 className="font-semibold">{cat.name}</h3>
                         </div>

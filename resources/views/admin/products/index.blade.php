@@ -35,7 +35,7 @@
                             <td class="text-muted">{{ $product->id }}</td>
                             <td>
                                 @if($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}"
+                                    <img src="{{ Str::startsWith($product->image, ['http://', 'https://']) ? $product->image : asset('storage/' . $product->image) }}"
                                          style="width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #eee;">
                                 @else
                                     <div style="width:40px;height:40px;background:#f4f6fb;border-radius:6px;display:flex;align-items:center;justify-content:center;">

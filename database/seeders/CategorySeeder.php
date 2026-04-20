@@ -8,28 +8,33 @@ use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
-        $tree = [
-            'Men'       => ['T-Shirts', 'Jeans', 'Jackets', 'Sneakers', 'Formal Shoes'],
-            'Women'     => ['Dresses', 'Tops', 'Skirts', 'Heels', 'Sandals'],
-            'Kids'      => ['Boys Clothing', 'Girls Clothing', 'School Shoes'],
-            'Sports'    => ['Running', 'Football', 'Basketball', 'Gym & Fitness'],
-            'Accessories' => ['Bags', 'Watches', 'Sunglasses', 'Caps'],
+        $categories = [
+            'Electronics',
+            'Fashion & Apparel',
+            'Home & Kitchen',
+            'Beauty & Personal Care',
+            'Sports & Outdoors',
+            'Books & Stationery',
+            'Toys & Games',
+            'Automotive',
+            'Health & Wellness',
+            'Groceries & Gourmet'
         ];
 
-        foreach ($tree as $parentName => $children) {
-            $parent = Category::updateOrCreate(
-                ['slug' => Str::slug($parentName)],
-                ['name' => $parentName, 'is_active' => true, 'parent_id' => null]
+        foreach ($categories as $name) {
+            Category::updateOrCreate(
+                ['slug' => Str::slug($name)],
+                [
+                    'name' => $name,
+                    'is_active' => true,
+                    'parent_id' => null
+                ]
             );
-
-            foreach ($children as $childName) {
-                Category::updateOrCreate(
-                    ['slug' => Str::slug($childName)],
-                    ['name' => $childName, 'is_active' => true, 'parent_id' => $parent->id]
-                );
-            }
         }
     }
 }
