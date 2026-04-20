@@ -25,6 +25,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::resource('customers', CustomerController::class);
 });
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/{any}', function () {
     return view('welcome');
-})->where('any', '.*');
+})->where('any', '^(?!admin|api).*$');
