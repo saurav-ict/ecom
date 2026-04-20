@@ -183,6 +183,20 @@ class ProductSeeder extends Seeder
                 $slug = $original . '-' . $i++;
             }
 
+            // Dummy Image Logic
+            $imageName = 'products/' . $slug . '.png';
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists('products')) {
+                \Illuminate\Support\Facades\Storage::disk('public')->makeDirectory('products');
+            }
+            if (!\Illuminate\Support\Facades\Storage::disk('public')->exists($imageName)) {
+                $bg = str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+                $imageUrl = "https://placehold.co/400x400/{$bg}/FFFFFF.png?text=" . urlencode($data['name']);
+                $imageContent = @file_get_contents($imageUrl);
+                if ($imageContent) {
+                    \Illuminate\Support\Facades\Storage::disk('public')->put($imageName, $imageContent);
+                }
+            }
+
             $product = Product::updateOrCreate(
                 ['sku' => $data['sku']],
                 [
@@ -193,6 +207,7 @@ class ProductSeeder extends Seeder
                     'stock'       => $data['stock'],
                     'brand_id'    => $brand?->id,
                     'is_active'   => true,
+                    'image'       => $imageName,
                 ]
             );
 

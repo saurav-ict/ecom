@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../services/api";
+import { api } from "./services/api";
 
 export default function Sidebar() {
     const [categories, setCategories] = useState([]);
@@ -21,12 +21,12 @@ export default function Sidebar() {
 
     const loadFallbacks = () => {
         setCategories([
-            {id: 1, name: 'Laptops & Computers'},
-            {id: 2, name: 'Smartphones & Tablets'},
-            {id: 3, name: 'Cameras & Photography'},
-            {id: 4, name: 'Smart Watches'},
-            {id: 5, name: 'Accessories'},
-            {id: 6, name: 'Gaming Consoles'},
+            { id: 1, name: 'Laptops & Computers' },
+            { id: 2, name: 'Smartphones & Tablets' },
+            { id: 3, name: 'Cameras & Photography' },
+            { id: 4, name: 'Smart Watches' },
+            { id: 5, name: 'Accessories' },
+            { id: 6, name: 'Gaming Consoles' },
         ]);
     };
 
@@ -38,8 +38,8 @@ export default function Sidebar() {
 
             <div className="flex flex-col py-2">
                 {categories.map(cat => (
-                    <div 
-                        key={cat.id} 
+                    <div
+                        key={cat.id}
                         className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-[#D10024] hover:bg-gray-50 cursor-pointer border-l-2 border-transparent hover:border-[#D10024] transition-all"
                     >
                         {cat.name}
